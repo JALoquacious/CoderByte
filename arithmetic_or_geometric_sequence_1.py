@@ -22,4 +22,4 @@ def ArithGeo(array):
 print(ArithGeo([-9,-13,-17,-21])) #"Arithmetic"
 print(ArithGeo([2,9,15,33])) #-1
 print(ArithGeo([2,4,8,16,32,64])) #"Geometric"
-print(ArithGeo([1,1,1,1,1,1,1])) #"Arithmetic"
+print(ArithGeo([1,1,1,1,1,1,1])) #(either geometric or arithmatic would be correct)
