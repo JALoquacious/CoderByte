@@ -5,14 +5,10 @@ digits in num until you reach a single digit. For example: if num is 2718 then
 your program should return 2 because 2 + 7 + 1 + 8 = 18 and 1 + 8 = 9 and you
 stop at 9."""
 
-def integer_list(num):
-    return [int(n) for n in str(num)]
-
 def additive_persistence(num):
     counter = 0
     while len(integer_list(num)) > 1:
-        print(integer_list(num), sum(integer_list(num)), counter)
-        num = sum(integer_list(num))
+        num = sum([int(n) for n in str(num)])
         counter += 1
     return counter
 
