@@ -4,18 +4,28 @@
 parameter being passed and return the string true if the characters a and b are
 separated by exactly 3 places anywhere in the string at least once (ie. "lane
 borrowed" would result in true because there is exactly three characters between
-a and b). Otherwise return the string false."""
+a and b). Otherwise return false."""
 
-def ABCheck(string):
+def ab_check(string):
+    if len(string) < 4:
+        return False
     string = "".join(string.lower().split())
-    for idx,val in enumerate(string):
-        #print(idx,":",val) # debug
-        if val == "a" and string[idx+3] == "b":
+    for idx in range(len(string)):
+        if (string[idx] == "a" and string[idx+3] == "b"
+        or  string[idx] == "b" and string[idx+3] == "a"):
             return True
-        elif val == "b" and string[idx+3] == "a":
-            return True
-    else: return False
+    return False
 
-print(ABCheck("after badly")) #False
-print(ABCheck("Laura sobs")) #True
-print(ABCheck("b32a")) #True
+
+import unittest
+
+class ABCheckTests(unittest.TestCase):
+    def test_ab_check(self):
+        self.assertFalse(ab_check("after badly"))
+        self.assertFalse(ab_check("ab"))
+        self.assertTrue(ab_check("Laura sobs"))
+        self.assertTrue(ab_check("b32a"))
+        self.assertTrue(ab_check("lane borrowed"))
+
+if __name__ == '__main__':
+    unittest.main()
