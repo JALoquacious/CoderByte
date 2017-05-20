@@ -5,18 +5,27 @@ digits in num until you reach a single digit. For example: if num is 2718 then
 your program should return 2 because 2 + 7 + 1 + 8 = 18 and 1 + 8 = 9 and you
 stop at 9."""
 
-def split(num):
+def integer_list(num):
     return [int(n) for n in str(num)]
 
-def add_pers(num):
+def additive_persistence(num):
     counter = 0
-    while len(split(num)) > 1:
-        num = sum(split(num))
+    while len(integer_list(num)) > 1:
+        print(integer_list(num), sum(integer_list(num)), counter)
+        num = sum(integer_list(num))
         counter += 1
     return counter
 
-print(add_pers(999999999999999999999)) #0
-print(add_pers(19)) #2
-print(add_pers(2718)) #2
-print(add_pers(10)) #1
-print(add_pers(4)) #0
+
+import unittest
+
+class AdditivePersistenceTests(unittest.TestCase):
+    def test_additive_persistence(self):
+        self.assertEqual(additive_persistence(999999999999999999999), 3)
+        self.assertEqual(additive_persistence(19), 2)
+        self.assertEqual(additive_persistence(2718), 2)
+        self.assertEqual(additive_persistence(313), 1)
+        self.assertEqual(additive_persistence(4), 0)
+        
+if __name__ == '__main__':
+    unittest.main()
