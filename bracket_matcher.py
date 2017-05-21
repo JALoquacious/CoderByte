@@ -7,7 +7,7 @@ each one is accounted for. Otherwise return 0. For example: if str is "(hello
 output should be 0 because the brackets do not correctly match up. Only "(" and
 ")" will be used as brackets. If str contains no brackets return 1. """
 
-def BracketMatcher(string):
+def bracket_matcher(string):
     L, R = 0, 0
     for s in string:
         if R and not L:
@@ -17,7 +17,16 @@ def BracketMatcher(string):
         elif s == ")":
             R += 1
     return 1 if L == R else 0
-    
-print(BracketMatcher(")((coder)(byte)")) # 0
-print(BracketMatcher("(c(oder)) b(yte)")) # 1
-print(BracketMatcher("((hello (world))")) # 0
+
+
+import unittest
+
+class AlphabetSoupTests(unittest.TestCase):
+    def test_alphabet_soup(self):
+        self.assertEqual(bracket_matcher(")((coder)(byte)"), 0)
+        self.assertEqual(bracket_matcher("(c(oder)) b(yte)"), 1)
+        self.assertEqual(bracket_matcher("((hello (world))"), 0)
+        self.assertEqual(bracket_matcher("((hello)) ((world))"), 1)
+        
+if __name__ == '__main__':
+    unittest.main()
