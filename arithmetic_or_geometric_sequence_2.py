@@ -10,7 +10,7 @@ constant or common ratio. Arithmetic example: [2, 4, 6, 8] and Geometric
 example: [2, 6, 18, 54]. Negative numbers may be entered as parameters, 0 will
 not be entered, and no array will contain all the same elements."""
 
-def ArithGeo(array):
+def arith_geo(array):
     arithmetic_count = 0
     geometric_count = 0
     for i in range(len(array) - 2):
@@ -24,8 +24,17 @@ def ArithGeo(array):
         return "Geometric"
     else:
         return -1
-    
-print(ArithGeo([-9,-13,-17,-21])) #"Arithmetic"
-print(ArithGeo([2,9,15,33])) #-1
-print(ArithGeo([2,4,8,16,32,64])) #"Geometric"
-print(ArithGeo([1,1,1,1,1,1,1])) #"Arithmetic" or "Geometric"
+
+
+import unittest
+
+class AlphabetSoupTests(unittest.TestCase):
+    def test_alphabet_soup(self):
+        self.assertEqual(arith_geo([-9,-13,-17,-21]), "Arithmetic")
+        self.assertEqual(arith_geo([2,9,15,33]), -1)
+        self.assertEqual(arith_geo([2,4,8,16,32,64]), "Geometric")
+        self.assertEqual(arith_geo([1,1,1,1,1,1,1]), "Arithmetic")
+        #(either geometric or arithmatic would be correct)
+        
+if __name__ == '__main__':
+    unittest.main()
