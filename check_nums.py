@@ -6,11 +6,23 @@ parameters being passed and return true if num2 is greater than num1, otherwise
 return false. If the parameter values are equal to each other then return -1.
 """
 
-def CheckNums(num1, num2):
+def check_nums(num1, num2):
     if num1 == num2: return -1
     elif num1 < num2: return True
     else: return False
 
-print(CheckNums(3, 122)) # True
-print(CheckNums(67, 67)) # -1
-print(CheckNums(45, 39)) # False
+print() # True
+print() # -1
+print() # False
+
+import unittest
+
+class CheckNumsTests(unittest.TestCase):
+    def test_check_nums(self):
+        self.assertEqual(check_nums(3, 122), True)
+        self.assertEqual(check_nums(67, 67), -1)
+        self.assertEqual(check_nums(45, 39), False)
+        self.assertEqual(check_nums(-114, 9834), True)
+        
+if __name__ == '__main__':
+    unittest.main()
