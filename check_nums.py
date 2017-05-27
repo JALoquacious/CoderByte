@@ -11,10 +11,6 @@ def check_nums(num1, num2):
     elif num1 < num2: return True
     else: return False
 
-print() # True
-print() # -1
-print() # False
-
 import unittest
 
 class CheckNumsTests(unittest.TestCase):
