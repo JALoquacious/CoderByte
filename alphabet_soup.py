@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
-"""Using the Python language, have the function AlphabetSoup(str) take the str
+"""
+Using the Python language, have the function AlphabetSoup(str) take the str
 string parameter being passed and return the string with the letters in
 alphabetical order (ie. hello becomes ehllo). Assume numbers and punctuation
-symbols will not be included in the string."""
+symbols will not be included in the string.
+"""
 
 def alphabet_soup(string):
     result = ""

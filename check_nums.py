@@ -13,6 +13,7 @@ def check_nums(num1, num2):
 
 import unittest
 
+
 class CheckNumsTests(unittest.TestCase):
     def test_check_nums(self):
         self.assertEqual(check_nums(3, 122), True)
