@@ -10,18 +10,26 @@ num1 is 123456789 and num2 is 10000 the output should be "12,345".
 
 import math
 
-def DivisionStringified(num1,num2):
+def division_stringified(num1, num2):
     quot = math.ceil(num1 / num2)
     if quot < 4:
         return quot
     else:
         array = [x for x in str(quot)]
-        for i in range(len(array)-3,0,-3):
+        for i in range(len(array)-3, 0, -3):
             array.insert(i,",")
         n_quot = ''.join(array)
         return n_quot
 
-print(DivisionStringified(123456789, 100)) # "1,234,568"
-print(DivisionStringified(5000000000000,2)) # "2,500,000,000,000"
-print(DivisionStringified(687413,67)) # "10,260"
-print(DivisionStringified(2000,3)) # "667"
+
+import unittest
+
+class DivisionStringifiedTests(unittest.TestCase):
+    def test_division_stringified(self):
+        self.assertEqual(division_stringified(123456789, 100), "1,234,568")
+        self.assertEqual(division_stringified(5000000000000, 2), "2,500,000,000,000")
+        self.assertEqual(division_stringified(687413, 67), "10,260")
+        self.assertEqual(division_stringified(2000, 3), "667")
+        
+if __name__ == '__main__':
+    unittest.main()
