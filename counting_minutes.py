@@ -7,11 +7,11 @@ if str is 9:00am-10:00am then the output should be 60. If str is 1:00pm-11:00am
 the output should be 1320.
 """
 
-def CountingMinutes(string): 
+def counting_minutes(string): 
     array = string.replace("-"," ").replace(":"," ").split()
     for i in range(len(array)):
         if "pm" in array[i]:
-            array[i-1] = (int(array[i-1])+12) * 60
+            array[i-1] = (int(array[i-1]) + 12) * 60
         elif "am" in array[i]:
             if array[i-1] == "12":
                 array[i-1] = 0
@@ -20,9 +20,18 @@ def CountingMinutes(string):
     time1, time2 = sum(array[0:2]), sum(array[2:4])
     if time1 < time2:
         return time2 - time1
-    else: return (time2 - time1) + 1440
+    else:
+        return (time2 - time1) + (60 * 24)
 
-print(CountingMinutes("12:30pm-12:00am")) # 690
-print(CountingMinutes("1:23am-1:08am")) # 1425
-print(CountingMinutes("9:00am-10:00am")) # 60
-print(CountingMinutes("1:00pm-1:00am")) # 1320
+
+import unittest
+
+class CountingMinutesTests(unittest.TestCase):
+    def test_counting_minutes(self):
+        self.assertEqual(counting_minutes("12:30pm-12:00am"), 690)
+        self.assertEqual(counting_minutes("1:23am-1:08am"), 1425)
+        self.assertEqual(counting_minutes("9:00am-10:00am"), 60)
+        self.assertEqual(counting_minutes("5:00pm-5:57am"), 777)
+        
+if __name__ == '__main__':
+    unittest.main()
